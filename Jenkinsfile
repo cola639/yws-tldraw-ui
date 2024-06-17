@@ -33,7 +33,7 @@ pipeline {
             steps {
                 sh 'pwd && ls -alh'  // Print the current directory and list files to debug path issues
                 sh 'node -v'  // Display Node.js version to verify the correct node environment
-                sh 'cd ${WS} && npm install --registry=https://registry.npmmirror.com --no-fund && npm run build:${PROFILE}'  // Navigate to workspace, install dependencies, and build the project
+                sh 'cd ${WS} && npm install --registry=https://registry.npmmirror.com --no-fund && npm run build'  // Navigate to workspace, install dependencies, and build the project
             }
         }
 
