@@ -33,7 +33,6 @@ pipeline {
             steps {
                 sh 'pwd && ls -alh'  // Print the current directory and list files to debug path issues
                 sh 'node -v'  // Display Node.js version to verify the correct node environment
-                sh 'cd ${WS} && npm install --registry=https://registry.npmmirror.com --no-fund && npm run build'  // Navigate to workspace, install dependencies, and build the project
             }
         }
 
@@ -49,7 +48,7 @@ pipeline {
                 sh 'pwd && ls -alh'  // Debugging command to print current directory and list files
                 // Cleanup old containers and dangling images to prevent conflicts and save space
                 sh 'docker rm -f ${IMAGE_NAME} || true && docker rmi $(docker images -q -f dangling=true) || true'
-                sh "docker run -d -p 80:80 --name ${IMAGE_NAME} ${DOCKER_IMAGE}"
+                sh "docker run -d -p 80 --name ${IMAGE_NAME} ${IMAGE_NAME}"
             }
         }
     }
